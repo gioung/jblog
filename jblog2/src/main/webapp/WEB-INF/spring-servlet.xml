@@ -95,7 +95,7 @@
         </mvc:interceptor>
        
         <mvc:interceptor>
-        	<mvc:mapping path="/*/admin/**"/>
+        	<mvc:mapping path="*/admin/**"/>
         	<bean class="com.cafe24.security.AuthAdminInterceptor"/>
         </mvc:interceptor> 
       

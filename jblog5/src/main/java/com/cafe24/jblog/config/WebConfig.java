@@ -78,7 +78,7 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 		
 		registry
         .addInterceptor(authAdminInterceptor())
-        .addPathPatterns("/*/admin/**");
+        .addPathPatterns("*/admin/**");
 		
     }
 	
