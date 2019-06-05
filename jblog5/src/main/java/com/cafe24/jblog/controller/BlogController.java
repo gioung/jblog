@@ -41,7 +41,7 @@ public class BlogController {
 			Model model) {
 		
 		
-		if(postNo.isEmpty() || postNo.get()<0) {
+		if(postNo==null || postNo.get()<0) {
 			postNo=Optional.ofNullable(0);
 		}
 		
@@ -57,7 +57,7 @@ public class BlogController {
 		model.addAttribute("categoryList", categoryList);
 		
 		//CategoryId 검사 없으면 첫번째값
-		if(categoryId.isEmpty() || categoryId.get()<0) {
+		if(categoryId==null || categoryId.get()<0) {
 			categoryId=Optional.ofNullable(categoryList.get(0).getId());
 		}
 		

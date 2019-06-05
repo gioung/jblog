@@ -1,9 +1,13 @@
 package com.cafe24.security;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.cafe24.jblog.repository.vo.UserVo;
@@ -24,9 +28,13 @@ public class AuthAdminInterceptor extends HandlerInterceptorAdapter {
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
 		
 		//현재 세션 아이디와 url 아이디값이 같은지 확인한다.
-		String uri = request.getRequestURI();
-		String[] tokens = uri.split("/");
-		String blogId = tokens[2];
+		Map<String, String> pathVariables = (HashMap<String, String>) request.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
+		String blogId="";
+		if(pathVariables!=null) {
+			blogId=pathVariables.get("blogId");
+			return false;
+		
+		}
 		//System.out.println(blogId);
 		//System.out.println("blogId = "+blogId);
 		
